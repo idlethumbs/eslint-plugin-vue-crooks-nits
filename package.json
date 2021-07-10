@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-vue-crooks-nits",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "index.js",
   "devDependencies": {
     "eslint": "~2.6.0"
