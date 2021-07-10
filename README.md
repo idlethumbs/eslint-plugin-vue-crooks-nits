@@ -1,6 +1,6 @@
 # eslint-plugin-vue-crooks-nits
 
-Some custom ESLint rules to catch vue niggles
+Some custom ESLint rules to catch vue niggles such as empty options and empty style tags.
 
 ## Usage
 
@@ -8,7 +8,6 @@ install package, include plugin rules in your .eslintrc
 
 ```
 plugins: ['vue-crooks-nits'],
-  // add your custom rules here
   rules: {
     'vue-crooks-nits/no-empty-vue-options': 1,
     'vue-crooks-nits/no-empty-styles': 1,
