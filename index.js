@@ -42,29 +42,31 @@ module.exports = {
            }
          }
          function checkIsEmptyData(node) {
-           switch(node.parent.value.type) {
-             case "ArrowFunctionExpression":
-               if(!node.parent.value.body.properties.length) {
-                 reportEmptyOption(node)
-               }
-               break
-             case "FunctionExpression":
-               const functionNode = node.parent.value.body.body
-               if(!functionNode.length) {
-                 reportEmptyOption(node)
-               } else if (
-                 functionNode[0]?.type == "ReturnStatement" && 
-                 !functionNode[0].argument?.properties.length 
-               ) {
-                 reportEmptyOption(node)
-               }
-               break
-             case "ObjectExpression":
-               // console.log(node.parent.value)
-               if(!node.parent.value.properties.length) {
-                 reportEmptyOption(node)
-               }
-               break
+           if(node.parent.value) {
+             switch(node.parent.value.type) {
+               case "ArrowFunctionExpression":
+                 if(!node.parent.value.body.properties.length) {
+                   reportEmptyOption(node)
+                 }
+                 break
+               case "FunctionExpression":
+                 const functionNode = node.parent.value.body.body
+                 if(!functionNode.length) {
+                   reportEmptyOption(node)
+                 } else if (
+                   functionNode[0]?.type == "ReturnStatement" && 
+                   !functionNode[0].argument?.properties.length 
+                 ) {
+                   reportEmptyOption(node)
+                 }
+                 break
+               case "ObjectExpression":
+                 // console.log(node.parent.value)
+                 if(!node.parent.value.properties.length) {
+                   reportEmptyOption(node)
+                 }
+                 break
+             }
            }
          }
          return {
