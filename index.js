@@ -22,12 +22,14 @@ module.exports = {
        },
        create: function(context) {
          function checkIsOption(node) {
-           if(["methods", "computed", "watch"].includes(node.name)) {
-             checkIsEmptyOption(node.parent)
-           }
-           if(["data", "asyncData", "created", "mounted", "destroyed", "beforeDestroy", "beforeCreate"].includes(node.name)) {
-             checkIsEmptyData(node)
-           }
+          if (node.parent?.parent?.parent?.type === 'ExportDefaultDeclaration' || node.parent?.parent?.type === 'ExportDefaultDeclaration') {
+            if(["methods", "computed", "watch"].includes(node.name)) {
+              checkIsEmptyOption(node.parent)
+            }
+            if(["data", "asyncData", "created", "mounted", "destroyed", "beforeDestroy", "beforeCreate"].includes(node.name)) {
+              checkIsEmptyData(node)
+            }
+          } 
          }
          function reportEmptyOption(node, msgID = "emptyApiOption") {
            const nodeName = node.name ?? node.key.name ?? ''
