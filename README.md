@@ -34,6 +34,25 @@ export default {
 }
 </script>
 ```
+
+#### **Override recommendations**
+
+Recommend overrides for any filetypes you don't want empty 'data' objects or functions to be flagged - (when is eslint going to have rules by filetype??) 
+
+If anyone can suggest how to improve the rule to only apply to vue file script tags that would be most welcome as I haven't as yet cracked that...
+
+*.eslintrc.js*
+```
+...
+overrides: [
+    {
+      files: ['*.js', '*.ts', '*.json'],
+      rules: {
+        'vue-crooks-nits/no-empty-vue-options': 'off'
+      }
+    }
+  ],
+```
 ---
 
 ### 'no-empty-styles'
